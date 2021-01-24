@@ -1,0 +1,211 @@
+
+@import 'vars';
+
+
+$question-font-color: hsl(237, 12%, 33%);
+$answer-font-color: hsl(240, 6%, 50%);
+$divider-color: hsl(240, 5%, 91%);
+$hover-font-color: hsl(14, 88%, 65%);
+
+// CSS reset
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p,
+a, img, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+//General styles
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        hsl(273, 75%, 66%),
+        hsl(240, 73%, 65%)
+    );
+    line-height: 1.3;
+    transition: all 0.5s ease;
+}
+
+
+h3 {
+    font-family: 'Kumbh Sans', sans-serif;
+    color: hsl(238, 29%, 16%);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+
+p {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 14px;
+    color: $question-font-color;
+}
+
+
+
+// Desktop version
+.faq-section {
+    background-color: white;
+    border-radius: 30px;
+    width: 60%;
+    min-height: 480px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+
+    display: flex;
+    align-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    
+
+    // Left column with image
+    .decorations {
+        overflow: hidden;
+        width: 35rem;
+
+        display: flex;
+        align-items: center;
+        background: url('../images/bg-pattern-desktop.svg') no-repeat;
+        background-size: cover;
+        background-position: 120% 0%;
+
+        .girl-with-screen-mobile {
+            display: none;
+        }
+        
+        
+        img {
+            width: 25rem;
+            margin: 3rem 0rem 2rem -4rem;
+        }
+    }
+    
+    // Right column with questions
+    .questions-answers {
+        padding-right: 4rem;
+        padding-left: 2rem;
+        flex-basis: 60%;
+        align-self: center;
+    }
+}
+
+
+
+.accordion {
+    display: block;
+    width: 100%;
+    padding-top: 0.8rem;
+    border-bottom: 1px solid $divider-color;
+    cursor: pointer;
+}
+
+// Style for question
+.accordion-button {
+    border: none;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    padding-left: 0rem;
+
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 14px;
+    color: $question-font-color;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: all 0.7s ease;
+}
+
+.accordion-button:hover{
+    color: hsl(14, 88%, 65%);
+}
+
+.accordion-button::after {
+    content: '\25be';
+    color:hsl(14, 88%, 65%);
+}
+
+// Added style on click
+.accordion-button--active {
+    font-weight: bold;
+}
+.accordion-button--active::after {
+    content: '\25b4';
+}
+
+
+// Style for hidden content
+.accordion-content {
+
+    // what we change on click
+    overflow: hidden;
+    max-height: 0;
+
+    margin-top: 0.4rem;
+    margin-bottom: 0.8rem;
+    transition: max-height 0.2s;
+
+    p {
+        color: $answer-font-color;
+        font-size: 12px;
+    }
+}
+
+#orange-cube {
+    width: 10rem;
+    position: fixed;
+    transform: translate(-270%, 30%);
+}
+
+
+@import 'mobile';
+
+//Hiding orange cube on large screens
+@media only screen and (min-width: 1584px) {
+    #orange-cube {
+        display: none;
+}}
